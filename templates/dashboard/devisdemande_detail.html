@@ -1,0 +1,24 @@
+<h1>Devis Demande Details</h1>
+<p><strong>Client Name:</strong> {{ demande.name }}</p>
+<p><strong>Email:</strong> {{ demande.email }}</p>
+<p><strong>Phone:</strong> {{ demande.phone }}</p>
+<p><strong>Details:</strong> {{ demande.address }}</p>
+<p><strong>Date Submitted:</strong> {{ demande.submitted_at|date:"Y-m-d H:i" }}</p>
+
+<form method="post" action="{% url 'devisdemande_update_status' demande.pk %}">
+    {% csrf_token %}
+    <label>
+        <input type="checkbox" name="customer_contacted" {% if demande.customer_contacted %}checked{% endif %}>
+        Customer Contacted
+    </label>
+    <br>
+    <label>
+        <input type="checkbox" name="request_completed" {% if demande.request_completed %}checked{% endif %}>
+        Request Completed
+    </label>
+    <br>
+    <button type="submit">Update Status</button>
+</form>
+
+<a href="{% url 'devisdemande_list' %}">Back to List</a>
+<a href="{% url 'dashboard' %}" class="button">Return to Dashboard</a>

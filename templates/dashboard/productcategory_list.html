@@ -1,0 +1,22 @@
+<h1>Product Categories</h1>
+<a href="{% url 'productcategory_create' %}">Add New Category</a>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for category in categories %}
+        <tr>
+            <td>{{ category.name }}</td>
+            <td>
+                <a href="{% url 'productcategory_update' category.pk %}">Edit</a> |
+                <a href="{% url 'productcategory_delete' category.pk %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'dashboard' %}" class="button">Return to Dashboard</a>

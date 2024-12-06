@@ -1,0 +1,29 @@
+<!-- templates/dashboard/realisation_list.html -->
+<h1>Réalisations</h1>
+<a href="{% url 'realisation_create' %}">Ajouter une Nouvelle Réalisation</a>
+<table>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Catégorie</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for realisation in realisations %}
+        <tr>
+            <td>{{ realisation.name }}</td>
+            <td>{{ realisation.description }}</td>
+            <td>{{ realisation.category.name }}</td>
+            <td>{{ realisation.created_at }}</td>
+            <td>
+                <a href="{% url 'realisation_update' realisation.pk %}">Modifier</a> |
+                <a href="{% url 'realisation_delete' realisation.pk %}">Supprimer</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'dashboard' %}" class="button">Retour au Tableau de Bord</a>

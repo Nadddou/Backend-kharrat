@@ -1,0 +1,28 @@
+<h1>Devis Demandes</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Client Name</th>
+            <th>Details</th>
+            <th>Date Submitted</th>
+            <th>Customer Contacted</th>
+            <th>Request_Completed</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for demande in demandes %}
+        <tr>
+            <td>{{ demande.name }}</td>
+            <td>{{ demande.address }}</td>
+            <td>{{ demande.submitted_at|date:"Y-m-d H:i" }}</td>
+            <td>{{ demande.customer_contacted }}</td>
+            <td>{{ demande.request_completed }}</td>
+            <td>
+                <a href="{% url 'devisdemande_detail' demande.pk %}">View</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'dashboard' %}" class="button">Return to Dashboard</a>

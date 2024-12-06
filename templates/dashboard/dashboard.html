@@ -1,0 +1,20 @@
+{% block content %}
+  <h2>Dashboard</h2>
+  <p>Welcome, {{ user.username }}!</p>
+  <ul>
+    <li><a href="{% url 'productcategory_list' %}">Manage Product Categories</a></li>
+    <li><a href="{% url 'productinfo_list' %}">Manage Product Information</a></li>
+    <li><a href="{% url 'realisation_list' %}">Manage Realisations</a></li>
+    <li><a href="{% url 'devisdemande_list' %}">View Devis Demandes</a></li>
+    <li><a href="{% url 'contactmessage_list' %}">Manage Contact Messages</a></li>
+    {% if user.is_superuser %}
+      <li><a href="{% url 'manage_users' %}">Manage Users</a></li>
+    {% endif %}
+  </ul>
+
+  <!-- Logout Form -->
+  <form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+  </form>
+{% endblock %}

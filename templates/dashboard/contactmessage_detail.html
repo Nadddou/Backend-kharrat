@@ -1,0 +1,25 @@
+<h1>Contact Message Details</h1>
+<p><strong>Sender Name:</strong> {{ contactmessage.name }}</p>
+<p><strong>Email:</strong> {{ contactmessage.email }}</p>
+<p><strong>Phone:</strong> {{ contactmessage.phone }}</p>
+<p><strong>Subject:</strong> {{ contactmessage.subject }}</p>
+<p><strong>Message:</strong> {{ contactmessage.message }}</p>
+<p><strong>Date Received:</strong> {{ contactmessage.submitted_at|date:"Y-m-d H:i" }}</p>
+
+<form method="post" action="{% url 'contactmessage_update_status' contactmessage.pk %}">
+    {% csrf_token %}
+    <label>
+        <input type="checkbox" name="customer_contacted" {% if contactmessage.customer_contacted %}checked{% endif %}>
+        Customer Contacted
+    </label>
+    <br>
+    <label>
+        <input type="checkbox" name="request_completed" {% if contactmessage.request_completed %}checked{% endif %}>
+        Request Completed
+    </label>
+    <br>
+    <button type="submit">Update Status</button>
+</form>
+
+<a href="{% url 'contactmessage_list' %}" class="button">Return to Contact Messages</a>
+<a href="{% url 'dashboard' %}" class="button">Return to Dashboard</a>

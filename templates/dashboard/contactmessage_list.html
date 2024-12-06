@@ -1,0 +1,32 @@
+<h1>Contact Messages</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Sender Name</th>
+            <th>Subject</th>
+            <th>Message</th>
+            <th>Date Received</th>
+            <th>Customer Contacted</th>
+            <th>Request_Completed</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for message in contactmessages %}
+        <tr>
+            <td>{{ message.name }}</td>
+            <td>{{ message.subject|truncatewords:10 }}</td>
+            <td>{{ message.message|truncatewords:10 }}</td>
+            <td>{{ message.submitted_at|date:"Y-m-d H:i" }}</td>
+            <td>{{ message.customer_contacted }}</td>
+            <td>{{ message.request_completed }}</td>
+            <td>
+                <a href="{% url 'contactmessage_detail' message.pk %}">View</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+<a href="{% url 'dashboard' %}" class="button">Return to Dashboard</a>

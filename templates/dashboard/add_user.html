@@ -1,0 +1,13 @@
+<!-- templates/dashboard/add_user.html -->
+<h1>Add New User</h1>
+<form method="post">
+    {% csrf_token %}
+    <label>Username:</label>
+    <input type="text" name="username" required>
+    <label>Email:</label>
+    <input type="email" name="email" required>
+    <label>Password:</label>
+    <input type="password" name="password" required>
+    <button type="submit">Add User</button>
+    <a href="{% url 'dashboard' %}" class="button">Return to Dashboard</a>
+</form>

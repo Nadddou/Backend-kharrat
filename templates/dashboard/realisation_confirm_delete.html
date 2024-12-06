@@ -1,0 +1,9 @@
+<!-- templates/dashboard/realisation_confirm_delete.html -->
+<h1>Delete Realisation</h1>
+<p>Are you sure you want to delete this realisation?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes, delete</button>
+    <a href="{% url 'realisation_list' %}">Cancel</a>
+</form>
+<a href="{% url 'dashboard' %}" class="button">Return to Dashboard</a>

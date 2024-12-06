@@ -1,0 +1,10 @@
+<!-- templates/dashboard/productinfo_form.html -->
+{% block content %}
+<h1>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Product</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+<a href="{% url 'productinfo_list' %}">Back to Product List</a>
+{% endblock %}

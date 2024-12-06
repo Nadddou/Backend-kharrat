@@ -1,0 +1,7 @@
+<h1>{{ category.id|yesno:"Edit Category,Add New Category" }}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+<a href="{% url 'dashboard' %}" class="button">Return to Dashboard</a>

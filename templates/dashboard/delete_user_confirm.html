@@ -1,0 +1,9 @@
+<!-- templates/dashboard/delete_user_confirm.html -->
+<h1>Delete User</h1>
+<p>Are you sure you want to delete user {{ user.username }}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes, delete</button>
+    <a href="{% url 'manage_users' %}">Cancel</a>
+</form>
+<a href="{% url 'dashboard' %}" class="button">Return to Dashboard</a>

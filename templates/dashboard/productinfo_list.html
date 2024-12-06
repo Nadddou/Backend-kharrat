@@ -1,0 +1,28 @@
+<!-- templates/dashboard/productinfo_list.html -->
+{% block content %}
+<h1>Product Information</h1>
+<a href="{% url 'productinfo_create' %}">Add New Product</a>
+<table>
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.category.name }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.description }}</td>
+            <td>
+                <a href="{% url 'productinfo_update' product.pk %}">Edit</a> |
+                <a href="{% url 'productinfo_delete' product.pk %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
